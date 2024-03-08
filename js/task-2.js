@@ -1,10 +1,15 @@
-function getShippingMessage(country, price, deliveryFee) {
-
-    const totalPrice = price + deliveryFee;
-    const message = `Shipping to ${country} will cost ${totalPrice} credits`;
-    return message;
+function makeArray(firstArray, secondArray, maxLength) {
+    const newArray = firstArray.concat(secondArray);
+    if (newArray.length > maxLength) {
+        return newArray.slice(0, maxLength);
+    } else {
+        return newArray;
+    }
 }
 
-console.log(getShippingMessage("USA", 1000, 50)); // "Shipping to USA will cost 1050 credits"
-console.log(getShippingMessage("Canada", 500, 30)); // "Shipping to Canada will cost 530 credits"
-console.log(getShippingMessage("UK", 1500, 70)); // "Shipping to UK will cost 1570 credits"
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
+console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
